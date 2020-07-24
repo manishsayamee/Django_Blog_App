@@ -1,0 +1,108 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Profile</title>
+</head>
+<body>
+
+  <a href = '/accounts/logout'>Logout</a><br>
+  <a href = '/accounts/signup'>SignUp</a><br>
+  Name: {{ request.user.get_full_name }} <br>
+  Email: {{ request.user.email }} <br>
+  Username: {{ request.user.username }} <br><br>
+
+  <hr>
+  {% for msg in message %}
+  <ur>
+    <li>
+      Title: <b>{{ msg.title }}</b>
+      Author: <b>{{ msg.author.username }}</b>
+      Created At: <b>{{ msg.created_on }}</b>
+  
+      {% if msg.author == request.user %}
+          <a href="{% url 'myblog:delete' msg.id %}">Delete</a>
+          <a href="{% url 'myblog:update' msg.id %}">Update</a>
+      {% endif %}
+    </li>
+
+  </ur>
+  <hr>
+   
+  {% endfor %}
+ 
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <title>Create A Blog</title>
+</head>
+<body>
+  <style>
+.card{
+  margin:auto;
+  margin-top:20px;
+}
+
+.col-4{
+  margin:20px;
+
+}
+.col{
+  margin:auto
+}
+body{
+  background-color: #9e4d99;
+}
+.img{
+  height:200px;
+}
+
+  </style>
+  <div class='row'>
+    <div class="col-4">
+    </div>
+
+    <div class="col-4">
+      <div class="row">
+        <div class="col-6">
+          <a href="{% url 'myblog:all' %}" class="btn btn-primary">Explore More!!</a>
+        </div>
+        
+        <div class="col-6">
+          <a href="{% url 'accounts:logout' %}" class="btn btn-primary">Log Out</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+      <div class="card" style="width: 18rem;">
+        <div class="img">
+          <img class="card-img-top" src="..." alt="Card image cap">
+        </div>   
+        <div class="card-body">
+          <h5 class="card-title">Profile</h5>
+          <p class="card-text">
+            Name: {{ request.user.get_full_name }} <br>
+            Email: {{ request.user.email }} <br>
+            Username: {{ request.user.username }} <br><br>
+          </p>
+    
+        </div>
+        <a href="{% url 'myblog:create' %}" class="btn btn-primary">Write a Blg</a>
+
+      </div>
+  
+</body>
+</html>
